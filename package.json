@@ -1,0 +1,22 @@
+{
+  "name": "smash-api",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "async": "^3.2.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "^2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "logrocket": "^1.0.8",
+    "morgan": "~1.9.1",
+    "node-watch": "^0.6.4",
+    "pg": "^8.2.1",
+    "postgre-sql": "^1.18.0",
+    "q": "^1.5.1"
+  }
+}

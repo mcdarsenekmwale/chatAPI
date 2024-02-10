@@ -40,79 +40,92 @@ Before you begin, ensure you have the following installed:
    ```bash
    git clone https://github.com/mcdarsenekmwale/chatAPI.git
 
-Navigate to the project directory:
+2. Navigate to the project directory:
 
+    ```bash
+    cd chatApi
 
-cd chatApi
-Install dependencies:
+3. Install dependencies:
 
-bash
-Copy code
-npm install
+    ```bash
+    npm install
+
 Set up any configuration files or environment variables as needed.
 
-Usage
-To start the Chat API, run the following command:
+5. Usage
+  To start the Chat API, run the following command:
+    ```bash
+      npm start
 
-
-npm start
 This will start the server, and you can then access the API at http://localhost:3000 (or the specified port).
 
 API Endpoints
-Messages
-Endpoint: /api/group/messages
-Method: POST
-Description: Send a new message
+
+  Messages
+  Endpoint: /api/group/messages
+  Method: POST
+  Description: Send a new message
 Request Example:
 
-{
-  "userId": "user123",
-  "content": "Hello, world!"
-}
+      ```bash
+      {
+        "userId": "user123",
+        "content": "Hello, world!"
+      }
+
 Response Example:
 
-{
-  "messageId": "message456",
-  "userId": "user123",
-  "content": "Hello, world!",
-  "timestamp": "2022-02-10T12:34:56Z"
-}
+    ```bash
+    {
+      "messageId": "message456",
+      "userId": "user123",
+      "content": "Hello, world!",
+      "timestamp": "2022-02-10T12:34:56Z"
+    }
+
 Groups
-Endpoint: /api/groups
-Method: POST
-Description: Create a new group
-Request Example:
+  Endpoint: /api/groups
+  Method: POST
+  Description: Create a new group
 
-{
-  "groupName": "developers",
-  "members": ["user123", "user456"]
-}
+Request Example:
+    ```bash
+    {
+      "groupName": "developers",
+      "members": ["user123", "user456"]
+    }
 Response Example:
 
-{
-  "groupId": "group789",
-  "groupName": "developers",
-  "members": ["user123", "user456"]
-}
+    ```bash
+    {
+      "groupId": "group789",
+      "groupName": "developers",
+      "members": ["user123", "user456"]
+    }
+
 Posts
+
 Endpoint: /api/groups/:groupId/posts
-Method: POST
+  Method: POST
 Description: Make a new post within a group
+
 Request Example:
 
-{
-  "userId": "user123",
-  "content": "Exciting news in the developers group!"
-}
+    ```bash
+    {
+      "userId": "user123",
+      "content": "Exciting news in the developers group!"
+    }
 Response Example:
 
-{
-  "postId": "post987",
-  "groupId": "group789",
-  "userId": "user123",
-  "content": "Exciting news in the developers group!",
-  "timestamp": "2022-02-10T13:45:00Z"
-}
+      
+      {
+        "postId": "post987",
+        "groupId": "group789",
+        "userId": "user123",
+        "content": "Exciting news in the developers group!",
+        "timestamp": "2022-02-10T13:45:00Z"
+      }
 Include additional API endpoints and their details as needed.
 
 Contributing

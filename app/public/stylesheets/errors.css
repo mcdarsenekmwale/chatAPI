@@ -1,0 +1,99 @@
+
+/* Define default variables in css */
+/*-----------------------------------------------*/
+
+:root{
+    --primary-color:#3498db;
+    --light-color:#f1c40f;
+    --dark-color:#2c3e50;
+    --b-index:-1;
+}
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('https://images.pexels.com/photos/376533/pexels-photo-376533.jpeg');
+    background-position:center;
+    background-size:cover;
+    background-repeat:  no-repeat;
+    filter: blur(0px);
+    z-index: var(--b-index);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Make background image blur */
+
+.bg-blur {
+    filter: blur(1px);
+    z-index:  var(--b-index);
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+}
+
+/* Make the header and main tag visible */
+
+header, main * {
+    display: block;
+    z-index:  1;
+    filter: blur(0);        
+    -webkit-filter: blur(0);
+}
+
+/* Style the header */
+
+header {
+    width: 85%;
+    max-width: 960px;
+    height: auto;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, .2), inset 0 -2px 5px rgba(0, 0, 0, .1);
+    overflow: hidden;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 3em;
+    color: #fff;
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+
+
+main {
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    max-width: 600px;
+    width: 100%;
+}
+
+p {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+pre {
+    white-space: pre-wrap;
+    overflow: auto;
+    font-size: 0.9em;
+}
+
+footer {
+    position: absolute;
+    bottom: 10px;
+    font-size: 0.8em;
+}

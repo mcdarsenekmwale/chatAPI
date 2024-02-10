@@ -1,0 +1,6 @@
+#ignore this files,
+/node_modules
+*.env
+*.crt
+*.csr
+*.key

@@ -1,0 +1,46 @@
+
+
+//- HTTP Status Codes
+h4.head-features HTTP Status Codes
+
+p.text-mute The Chat API utilizes standard HTTP status codes to communicate the outcome of a request. Below are some common status codes you may encounter:
+
+ul.list-group.marginl-5
+  li 
+    span.text-bold.text-success  **200 OK**#{"\t"}          
+    i.text-muted The request was successful.
+  li 
+    span.text-bold.text-success **201 Created**: 
+    i.text-muted The resource was successfully created.
+  li 
+    span.text-bold.text-primary **204 No Content**: 
+    i.text-muted The request was successful, but there is no additional content to send in the response.
+  li 
+    span.text-bold.text-dark **400 Bad Request**: 
+    i.text-muted The request could not be processed due to incorrect or malformed parameters.
+  li 
+    span.text-bold.text-warning **401 Unauthorized**: 
+    i.text-muted Authentication is required, or the provided credentials are invalid.
+  li 
+    span.text-bold.text-warning **403 Forbidden**: 
+    i.text-muted The request is valid, but the server refuses to respond.
+  li 
+    span.text-bold.text-muted **404 Not Found**: 
+    i.text-muted The requested resource could not be found.
+  li 
+    span.text-bold.text-danger **500 Internal Server Error**: 
+    i.text-muted An unexpected server error occurred.
+
+br
+//- // Example Error Response
+h5.head-features.text-medium Example Error Response
+
+pre.code-pad.bg-dark.text-light
+  code.
+    {
+      "code status": 400,
+      "code message": "Bad Request: Invalid input parameters. Please check your request and try again."
+    }
+
+p In the case of an error, the API will include the `code status` and `code message` fields in the JSON response to provide developers with relevant information for troubleshooting and resolution.
+

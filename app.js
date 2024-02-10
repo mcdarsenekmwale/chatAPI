@@ -1,13 +1,18 @@
-var createError   = require('http-errors'),
+require('dotenv').config();
+var createError = require('http-errors'),
     express       = require('express'),
     path          = require('path'),
     cookieParser  = require('cookie-parser'),
     logger        = require('morgan'),
     // watch         = require('node-watch'),
-    indexRouter   = require('./routes/index'),
+    indexRouter   = require('./app/src/routes/index'),
     LogRocket     = require('logrocket'),
-    usersRouter   = require('./routes/users');
+    apiRouter   = require('./app/src/routes/api/api.route'),
+  livereload = require('livereload'),
+  connectLiveReload = require('connect-livereload'),
+  AuthorizationMiddleware = require('./app/src/helper/middleware/authorization')
 
+        
 LogRocket.init('xluiui/smash_app');
 // watch('/', { recursive: true }, function(evt, name) {
 //   console.log('%s changed.', name);
@@ -16,17 +21,29 @@ LogRocket.init('xluiui/smash_app');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'app/views'));
 app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'app/public')));
+
+
+// Live Reload configuration
+const liveReloadServer = livereload.createServer();
+liveReloadServer.server.once("connection", () => {
+    setTimeout(() => {
+        liveReloadServer.refresh("/");
+    }, 100);
+});
+
+
+app.use(connectLiveReload())
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/v1', AuthorizationMiddleware.requestHasValidAPIKey, apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -43,5 +60,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 module.exports = app;

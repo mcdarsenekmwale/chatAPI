@@ -1,0 +1,37 @@
+- const badgeDecider = method =>
+    case method
+        when 'GET'
+            span.text-start.caption-top.begin.badge.badge-pill.bg-success.pull-right= method
+        when 'POST'
+            span.text-start.caption-top.begin.badge.badge-pill.bg-dark.pull-right= method
+        when 'PUT'
+            span.text-start.caption-top.end.badge.badge-pill.bg-primary= method
+        when 'DELETE'
+            span.text-start.caption-top.end.badge.badge-pill.bg-danger= method
+        default
+            span.text-start.caption-top.begin.badge.badge-pill.bg-secondary= method
+
+
+- const eachEndpoint = eachEndpointData =>
+  td
+    span= badgeDecider(eachEndpointData.method)
+  td
+    code.code.text-muted= "/api/v1"+ eachEndpointData.path
+  td
+    code= eachEndpointData.description
+              
+
+table.table.table-light.table-borderles.table-sm.table-responsive
+    thead.table-dark
+        tr
+            th(scope="col") Method
+            th(scope="col") Endpoint
+            th(scope="col") Description
+    tbody.table-group-divider       
+        each endpoint in apiEndpoints      
+            tr= eachEndpoint(endpoint)
+    tfoot
+        tr
+            td &nbsp;
+            td.text-small.text-primary Authentication required for all operations except listing chats and getting individual chat information
+            td

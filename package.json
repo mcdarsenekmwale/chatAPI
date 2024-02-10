@@ -3,20 +3,35 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./app/bin/www",
+    "dev": "nodemon ./app/bin/www --env development",
+    "test": " mocha ./app/tests/*.test.js"
   },
   "dependencies": {
     "async": "^3.2.0",
+    "bcryptjs": "^2.4.3",
+    "connect-livereload": "^0.6.1",
     "cookie-parser": "~1.4.4",
     "debug": "^2.6.9",
+    "dotenv": "^16.4.1",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
+    "jsonwebtoken": "^9.0.2",
+    "livereload": "^0.9.3",
     "logrocket": "^1.0.8",
+    "mocha": "^10.3.0",
     "morgan": "~1.9.1",
     "node-watch": "^0.6.4",
     "pg": "^8.2.1",
     "postgre-sql": "^1.18.0",
-    "q": "^1.5.1"
+    "q": "^1.5.1",
+    "redis": "^4.6.13",
+    "retry": "^0.13.1",
+    "supertest": "^6.3.4",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
   }
 }

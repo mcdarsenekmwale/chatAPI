@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Error Page
+  
+    link(rel="stylesheet", href="/stylesheets/errors.css")
+    // Add your stylesheet link if needed
+
+  body
+    header
+      h1 Error Occurred
+    main
+      if error
+        p Status: #{error.status}
+        pre Stack Trace: #{error.stack}
+      else
+        p An unexpected error occurred.
+
+    footer
+      p © 2024 McDarsene
+      a(href="https://github.com/mcdarsene/mcdarsene.github.io" target="_blank") View Source
+
+

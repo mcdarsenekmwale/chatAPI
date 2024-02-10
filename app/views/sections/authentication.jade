@@ -1,0 +1,15 @@
+.well.code-pad
+    span.copy-hint COPY
+    pre.code
+        span.label.label-info HTTP HEADER (recommended)
+        br
+        code.inline lang="bash" Apikey=YOUR_API_KEY&nbsp;curl -i "http://{{base_url}}/api/v1/" -H "Content-Type: application/json" -H "Accept: application/json"
+        br
+        code.inline -H "Authorization: Apikey YOUR_API_KEY"
+        br
+        code.inline -X POST
+        code.inline.pl-3 -d '{
+            "name": "<NAME>",
+            "email": "<EMAIL>",
+            "password": "password"
+            }`

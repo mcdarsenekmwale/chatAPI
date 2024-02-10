@@ -1,0 +1,154 @@
+extends layout
+
+block content
+  body
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.d-none.d-lg-block(style={'z-index': 2000, position:'sticky !important', top:0} )
+      ul
+        li
+          a(href="#introduction") Introduction
+        li
+          a(href="#getting-started") Getting Started
+        li
+          a(href="#endpoints") Endpoints
+        li
+          a(href="#authentication") Authentication
+        li
+          a(href="#errors") Errors
+
+    main.container
+      section#introduction 
+        a(href="#").link-text
+          h2(style={ 'font':' italic'}) Introduction
+        p.text-muted.para-text(style={ 'font':' italic'}) This API is built using the <a href="https://expressjs.com/" target="_blank">Express</a> framework and utilizes JSON Web Tokens for authentication. 
+        include  ./sections/intro.jade
+
+        
+      section#getting-started
+        a(href="#").link-text
+          h2(style={ 'font':' italic'}) Getting Started
+        p.text-muted.para-text(style={ 'font':'1em italic'}) To get started, review our comprehensive API documentation that covers endpoints, request and response formats, and authentication details. Whether you're building a chat application, integrating chat functionality into an existing system, or exploring innovative communication solutions, this documentation provides the guidance you need.
+        br
+        p.text-muted.para-text(style={ 'font':'1em italic'}) To get started using the Chat API, you will need to:
+        ol.group-list
+          li(style={ 'font':'.8em italic'}) Create an account with us.
+          li(style={ 'font':'.8em italic'}) Obtain an API key.
+          li(style={ 'font':'.8em italic'}) Start making requests to the API.
+          li(style={ 'font':'.8em italic'}) Review the API documentation to learn how to use the API.
+        include ./sections/getting_started.jade
+
+      section#authentication
+        a(href="#").link-text
+          h2(style={ 'font':' italic'}) Authentication
+        p.text-muted.para-text(style={ 'font':'.8em italic'}) All requests to the Chat API must be authenticated using an API key. You can provide your API key in the following ways:
+        ol.group-list
+          li(style={ 'font':'.85em italic'}) Using the code X-API-KEY header.
+          li(style={ 'font':'.85em italic'}) Passing the API key as a query parameter.
+          li(style={ 'font':'.85em italic'}) Passing the API key in the Authorization header.
+            br
+            small(style={ 'font':'.85em italic'}) This is not recommended for security reasons and should only be used if absolutely necessary.</s
+            small(style={ 'font':'.85em italic'}) This is not recommended for public facing applications but can be useful for testing and development purposes
+            small(style={ 'font':'.85em italic'}) This is not recommended for security reasons and should only be used for testing purposes.
+              | If this method of authentication is used it must be included in all HTTP requests made by your client application.
+              | If this method of authentication is used it will appear in your app's logs along with all other request data.
+              | If this method is chosen, it must be included in all lowercase letters (e.g., authorization: apikey123).
+              br
+              | If you are planning on deploying your application please use one of the other methods above.
+        include ./sections/authentication.jade
+
+      section#endpoints
+        a(href="#").link-text
+          h2 Endpoints
+        p.text-muted.para-text The following endpoints are supported by the Chat API:
+        
+        ol.endpoint-list1
+          li Endpoints that allow users to create new conversations (Channels) can be found under &nbsp;
+            a(href="/docs/conversation") Conversations
+          li All other endpoints require an existing conversation ID. These can be created from the Conversations endpoint or retrieved from a Channel.
+          li All other endpoints require an existing conversation ID which can be obtained from the previous endpoint
+          li All other endpoints require an existing conversation ID which can be obtained from creating or joining
+          li All other endpoints require an existing conversation ID which can be obtained from creating or joining
+          li All other endpoints relate to specific Conversations. You'll find them under &nbsp;
+            a(href="/docs/message") Messages
+          li All other endpoints relate to specific Conversations. You'll find them under &nbsp;
+            a(href="/docs/user") Users
+          li All other endpoints relate to specific Conversations. You'll find them under &nbsp;
+            a(href="/docs/event") Events
+          li All other endpoints relate to specific Conversations. You'll find them under &nbsp;
+            a(href="https://github.com/pusher/chatkit-server/blob/master/protocol.md" target="_blank") Protocols
+            a(href="https://github.com/layerhq/api-tester" target="_blank") Test Cases 
+          li All other endpoints relate to specific Conversations. You'll find them under &nbsp;
+            a(href="/faqs/#what-is-a-webhook") Webhooks
+
+          br 
+          br         
+          p.text-muted
+            i.text-dark.text-large The following endpoints are not supported by the Chat API but may be useful if you want to interact with Layer's RESTful API:
+          
+          include ./sections/endpoints.jade
+        
+      section#errors
+        a(href="#").link-text
+          //- Error Handling
+          h2 Handling Errors
+        p.text-muted.para-text In the event of an error, the Chat API will respond with an error message in JSON format. The error payload will contain the following fields:
+        ul.group-list
+          li 
+            strong.text-dark.text-capitalize Code status: 
+            i
+              small The HTTP status code of the error response.
+          li 
+            strong.text-dark.text-capitalize  code message: 
+            i 
+              small A human-readable message describing the error.
+        
+        include ./sections/errors.jade
+    br
+    hr
+    footer.footer.bg-light
+      p.text-dark.text-center.mt-7 © #{new Date().getUTCFullYear()} McDarsene
+      a(href="https://github.com/mcdarsene/mcdarsene.github.io" target="_blank") View Source
+
+    
+    aside.sidebar.bg-light.py-5(style={position:'fixed', left:0, height:'100em', top:0, width:'10em' })
+      .container-fluid
+        div(style={display:'block', padding: '0px 0em', 'font-size':'1em !important' })
+          .section.pt-5          
+            p.text-small.text-bold(style={ 'font':'.85em italic'}) Get started with our onboarding process and understand how to integrate with our platform.
+            ul.text-primary
+              li
+                a(href="#getting-started" class="text-dark text-decoration-none") 
+                  span(style={ 'font':'1.25em italic'}) Getting Started
+              li
+                a(:href="`mailto:${contactEmail}`", class="text-dark text-decoration-none") 
+                  span(style={ 'font':'1.25em italic'}) Contact Us
+          .section
+            h6 APIs 
+            p.text-small(style={ 'font':'.86em italic'}) Learn about our different APIs, including access methods and documentation for each one.
+            ul
+              li
+                a(href="/docs/overview/#what-are-apis", :class="{active: $route.path === '/docs/overview/'}" )
+                  span(style={ 'font':'1.25em italic'}) What are APIs?
+     
+div(class='mt-5')
+        #apikeyModal.modal fade(tabindex='-1', role='dialog')
+          .modal-dialog(role='document')
+            .modal-content
+              .modal-header
+                button.close(type='button', data-dismiss='modal' aria-label='Close') &times;
+                h4.modal-title Enter your API Key
+              .modal-body
+                label.form-label Your API Key is: <strong>{{APIKey}}</strong>
+              .modal-footer
+                button.btn.btn-primary(data-dismiss='modal') Close
+              
+        script(src="https://cdn.jsdelivr.net/npm/vue@2.6.12")
+        script.
+          new Vue({
+            el: '#apikeyModal',
+            data:{
+              APIKey: 'your_api_key'
+            }
+          })
+
+
+

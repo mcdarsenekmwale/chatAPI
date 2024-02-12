@@ -67,7 +67,7 @@ API Endpoints
   Description: Send a new message
 Request Example:
 
-      ```bash
+      
       {
         "userId": "user123",
         "content": "Hello, world!"
@@ -75,7 +75,7 @@ Request Example:
 
 Response Example:
 
-    ```bash
+    
     {
       "messageId": "message456",
       "userId": "user123",
@@ -89,14 +89,14 @@ Groups
   Description: Create a new group
 
 Request Example:
-    ```bash
+    
     {
       "groupName": "developers",
       "members": ["user123", "user456"]
     }
 Response Example:
 
-    ```bash
+    
     {
       "groupId": "group789",
       "groupName": "developers",
@@ -111,7 +111,7 @@ Description: Make a new post within a group
 
 Request Example:
 
-    ```bash
+    
     {
       "userId": "user123",
       "content": "Exciting news in the developers group!"
